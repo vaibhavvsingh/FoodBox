@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #141414;
+  --color-bg-tertiary: #1e1e1e;
+  --color-accent: #ff6b35;
+  --color-accent-hover: #ff8c5a;
+  --color-accent-secondary: #00ff88;
+  --color-border: #333333;
+  --font-family-main: 'Space Grotesk', sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+  --spacing-container: 1280px;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+.section-full {
+  min-height: calc(100vh - 200px);
+}
+
+.page-full {
+  min-height: calc(100vh - 160px);
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: 3px solid var(--color-border);
+  box-shadow: 6px 6px 0px var(--color-border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  box-shadow: 4px 4px 0px var(--color-border);
+  transform: translate(2px, 2px);
+}
+
+.btn-secondary {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: 3px solid var(--color-border);
+  box-shadow: 6px 6px 0px var(--color-border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  box-shadow: 4px 4px 0px var(--color-border);
+  transform: translate(2px, 2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: 3px solid var(--color-border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.card {
+  background: var(--color-bg-secondary);
+  border: 3px solid var(--color-border);
+  box-shadow: 6px 6px 0px var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 8px 8px 0px var(--color-border);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-family: var(--font-family-main);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 1.5rem;
+  border: 3px solid var(--color-border);
+  box-shadow: 6px 6px 0px var(--color-border);
+  z-index: 300;
+  animation: slideIn 0.3s ease;
+  max-width: calc(100% - 2rem);
+}
+
+@media (min-width: 640px) {
+  .toast {
+    left: auto;
+    right: 2rem;
+    transform: none;
+  }
+}
+
+.toast-success {
+  border-color: var(--color-accent-secondary);
+}
+
+.toast-error {
+  border-color: #ff4444;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-50%) translateX(100%); }
+  to { transform: translateX(-50%) translateX(0); }
+}
+
+@media (min-width: 640px) {
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+}
